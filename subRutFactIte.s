@@ -1,30 +1,32 @@
+# Escribe un programa que llamando a una función calcule el factorial 
+# de un número dado. Si el argumento es negativo, devuelva como 
+# parámetro de salida el valor -1
 .data
-V:	.word 1,2,1,2,3,1,2,3,-4,-5
-N:	.word 10
+A:	.word 6
 .bss
-Sum: .zero 4
+B:	.zero 4
 .text
-.global main 
+.global main
 main:
-    la t0, N
-    lw t0, 0(t0)
-    call SumaVector 
-     
-     j fin
-SumaVector:
-     bge x0, t0, finSV
-     la t1, V #puntero elems vector
-     la t3, Sum
-     lw t3, 0(t3)
-     buc:
-         lw t2, 0(t1) #elem act de V
-         add t3, t3, t2 #acumulador
-         addi t1,t1, 4
-         addi t0, t0, -1
-         bnez t0, buc
-     la t2, Sum
-     sw t3, 0(t2)
-     ret
-finSV: li a0, 0
-     ret
-fin:	nop
+la a0, A
+lw a0, 0(a0)
+call factorial
+la t0, B
+sw t1, 0(t0)
+j fin
+factorial:
+bge x0, a0, finFact
+la t1, B
+la t2, A
+lw t1, 0(t2)
+addi a0, a0, -1
+li t2, 1
+buc:
+mul t1, t1, a0
+addi a0, a0, -1
+blt t2, a0, buc
+lw a0, 0(t1)
+ret
+finFact: li a0, -1
+ret
+fin:	nop     

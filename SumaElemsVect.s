@@ -1,3 +1,9 @@
+# Escribe un programa que llamando a una función sume todos los 
+# elementos de un vector. Los parámetros de la función son: dirección 
+# de memoria de comienzo del vector, y número de elementos del vector. 
+# Comprueba que funcione para número de elementos del vector n=0. 
+# Comprueba que si fuera negativo n, de como salida el valor 0.
+
 .data
 V:	.word 1,2,1,2,3,1,2,3,-4,-5
 N:	.word 10
